@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Memory game</title>
+<style>
+	#contain {
+		max-width: 950px;
+		height: 474px;
+		border: solid;
+		padding: 0px;
+	}
+
+	.conti {
+		width: 150px;
+		height: 150px;
+		border: solid 1px;
+		margin: 0px;
+		float: left;
+	}
+
+	.image {
+		background-position: cover;
+		opacity: 0;
+		width: 150px;
+		height: 150px;
+	}
+
+
+</style>
+
+</head>
+<body onload="initialize()">
+<h1>MEMORY</h1>
+
+<div id="contain"></div>
+
+
+<script>
+
+var pics = [];
+	
+		for (var i = 1; i < 10; i++) {
+			
+			pics.push("images/"+i+".jpg");
+			pics.push("images/"+i+".jpg");
+			
+		}	
+
+		console.log(pics);
+
+	function initialize() {
+		for (var i = 0; i < 18; i++) {
+			var j = i+1;
+			var randoume = Math.floor((Math.random() * pics.length) );
+			var pif = pics[randoume];
+			var affichage = '<div class="conti"><div class="image" id="'+j+'" style="background-image: url(' +pif+ ')" onclick="compare('+j+')"></div></div>';
+			document.getElementById("contain").innerHTML += affichage;
+			pics.splice(randoume, 1);
+			console.log(j);
+			console.log(pif);
+	
+		}
+	}
+
+	function compare(a) {
+		var aElem =document.getElementById(a);
+		var attrib = aElem.style.backgroundImage;
+		aElem.style.opacity = 1;
+
+
+		console.log(attrib);
+	}
+
+
+</script>
+</body>
+</html>
