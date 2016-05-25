@@ -66,23 +66,26 @@ var nombreDeCoups = 0;
 		aElem.style.opacity = 1;
 		results.push(attrib);
 		count++;
+
+		count2 = count - 2;
+		count1 = count - 1;
+
+
 		if (count%2 == 0) {
 			nombreDeCoups++;
 			document.getElementById("nb").innerHTML = nombreDeCoups;
-			console.log(results.length);
 			if (results.length == 18) {
 			alert("GAGNE YEAH");
-		}
+			}
 			resultat();
-
 		}
+
 	}
 
 	function resultat () {
-		count2 = count - 2;
-		count1 = count - 1;
 		
-		if (results[count2] != results[count1]) {
+		
+		if (results[count2] != results[count1] || elements[0] == elements[1]) {
 			setTimeout(function() {
 				elements[0].style.opacity = 0;
 				elements[1].style.opacity = 0;
