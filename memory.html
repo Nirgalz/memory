@@ -38,15 +38,14 @@
 <script>
 
 var pics = [];
+var results = [];
+var count = 0;
+var elements = []
 	
 		for (var i = 1; i < 10; i++) {
-			
 			pics.push("images/"+i+".jpg");
 			pics.push("images/"+i+".jpg");
-			
 		}	
-
-		console.log(pics);
 
 	function initialize() {
 		for (var i = 0; i < 18; i++) {
@@ -56,20 +55,49 @@ var pics = [];
 			var affichage = '<div class="conti"><div class="image" id="'+j+'" style="background-image: url(' +pif+ ')" onclick="compare('+j+')"></div></div>';
 			document.getElementById("contain").innerHTML += affichage;
 			pics.splice(randoume, 1);
-			console.log(j);
-			console.log(pif);
-	
 		}
 	}
 
 	function compare(a) {
-		var aElem =document.getElementById(a);
+		aElem =document.getElementById(a);
+		elements.push(aElem);
 		var attrib = aElem.style.backgroundImage;
 		aElem.style.opacity = 1;
-
-
-		console.log(attrib);
+		results.push(attrib);
+		count++;
+		if (count%2 == 0) {
+			resultat();
+		}
 	}
+
+	function resultat () {
+		count2 = count - 2;
+		count1 = count - 1;
+
+		if (results[count2] != results[count1]) {
+			setTimeout(function() {
+				elements[0].style.opacity = 0;
+				elements[1].style.opacity = 0;
+				elements = [];
+			}, 1000);
+			results.splice(- 1);
+			results.splice(- 1);
+		count = count - 2;
+		}
+		
+		else if (results[count2] == results[count1]){
+			elements[0].onclick = null;
+			elements[1].onclick = null;
+			elements = [];
+		}
+
+		else if (results.length == pics.length) {
+			alert("GAGNE YEAH");
+		}
+	}
+
+	
+			
 
 
 </script>
