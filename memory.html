@@ -66,25 +66,19 @@ var nombreDeCoups = 0;
 		aElem.style.opacity = 1;
 		results.push(attrib);
 		count++;
-
 		count2 = count - 2;
 		count1 = count - 1;
-
-
 		if (count%2 == 0) {
 			nombreDeCoups++;
 			document.getElementById("nb").innerHTML = nombreDeCoups;
 			if (results.length == 18) {
-			alert("GAGNE YEAH");
+				alert("GAGNE YEAH");
 			}
 			resultat();
 		}
-
 	}
 
 	function resultat () {
-		
-		
 		if (results[count2] != results[count1] || elements[0] == elements[1]) {
 			setTimeout(function() {
 				elements[0].style.opacity = 0;
@@ -94,7 +88,6 @@ var nombreDeCoups = 0;
 			results.splice(- 1);
 			results.splice(- 1);
 		count = count - 2;
-		
 		}
 
 		else if (results[count2] == results[count1]){
@@ -102,8 +95,6 @@ var nombreDeCoups = 0;
 			elements[1].onclick = null;
 			elements = [];
 		}
-
-		
 	}
 
 	
