@@ -31,9 +31,10 @@
 </head>
 <body onload="initialize()">
 <h1>MEMORY</h1>
-<div>Nombre de coups : <p id="nb"></p></div>
+<!-- <button onclick="restartGame()">Restart</button>
+<p id="demo"></p> -->
+<div>Number of moves<p id="nb"></p></div>
 <div id="contain"></div>
-
 
 <script>
 
@@ -72,7 +73,7 @@ var nombreDeCoups = 0;
 			nombreDeCoups++;
 			document.getElementById("nb").innerHTML = nombreDeCoups;
 			if (results.length == 18) {
-				alert("GAGNE YEAH");
+				alert("WON IN "+nombreDeCoups+"MOVES, WELL DONE!");
 			}
 			resultat();
 		}
@@ -97,6 +98,17 @@ var nombreDeCoups = 0;
 		}
 	}
 
+	function restartGame() {
+		var x;
+		if (confirm("Reinitialize ?") == true) {
+			document.getElementById("contain").innerHTML = "";
+			initialize();
+		}
+		else {
+			x = "Already giving up ?"
+		}
+		document.getElementById("demo").innerHTML = x;
+	}
 	
 			
 
