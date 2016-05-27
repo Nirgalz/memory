@@ -6,7 +6,6 @@
 	#contain {
 		max-width: 950px;
 		height: 474px;
-		;
 		padding: 0px;
 	}
 
@@ -30,7 +29,6 @@
 		top: 0;
 		left: 0;
 		right: 0;
-
 		text-align: center;
 	}
 
@@ -42,6 +40,7 @@
 <h1>MEMORY</h1>
 <button onclick="restartGame()">Restart</button>
 <div>Number of moves<p id="nb"></p></div>
+<div>BEST SCORE <p id="best"></p></div>
 <div id="contain"></div>
 <div id="won"></div>
 
@@ -51,6 +50,7 @@ var pics = [];
 var results = [];
 var count = 0;
 var elements = [];
+var bestScore = 0;
 var won = document.getElementById("won");
 
 	function initialize() {
@@ -123,11 +123,18 @@ var won = document.getElementById("won");
 
 	function gameWon() {
 		won.innerHTML = '<H1>WON IN "'+nombreDeCoups+'" MOVES, WELL DONE!</H2><button onclick="restartGame()">Restart</button>';
+		if (nombreDeCoups < bestScore) {
+			highScore()
+		}
+		else if (bestScore == 0) {
+			highScore()
+		}
 	}
-	
-			
 
-
+	function highScore() {
+		bestScore = nombreDeCoups;
+		document.getElementById("best").innerHTML = bestScore;
+	}
 </script>
 </body>
 </html>
