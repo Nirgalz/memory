@@ -30,19 +30,20 @@
 		top: 0;
 		left: 0;
 		right: 0;
-		bottom: 0;
+
 		text-align: center;
 	}
+
 </style>
 
 </head>
-<div id="won"></div>
 <body onload="initialize()">
+
 <h1>MEMORY</h1>
 <button onclick="restartGame()">Restart</button>
-<p id="demo"></p>
 <div>Number of moves<p id="nb"></p></div>
 <div id="contain"></div>
+<div id="won"></div>
 
 <script>
 
@@ -83,10 +84,10 @@ var won = document.getElementById("won");
 				nombreDeCoups++;
 				document.getElementById("nb").innerHTML = nombreDeCoups;
 				if (results.length == 18) {
-				gameWon();
+					gameWon();
 				}
 				else {
-				resultat();
+					resultat();
 				}
 			}
 		}
@@ -114,6 +115,7 @@ var won = document.getElementById("won");
 	function restartGame() {
 			document.getElementById("contain").innerHTML = "";
 			won.innerHTML = "";
+			nombreDeCoups = 0;
 			initialize();
 
 	}
