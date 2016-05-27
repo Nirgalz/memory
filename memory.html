@@ -25,10 +25,18 @@
 		height: 150px;
 	}
 
-
+	#won {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		text-align: center;
+	}
 </style>
 
 </head>
+<div id="won"></div>
 <body onload="initialize()">
 <h1>MEMORY</h1>
 <button onclick="restartGame()">Restart</button>
@@ -42,9 +50,10 @@ var pics = [];
 var results = [];
 var count = 0;
 var elements = [];
-var nombreDeCoups = 0;
+var won = document.getElementById("won");
 
 	function initialize() {
+		nombreDeCoups = 0;
 		for (var i = 1; i < 10; i++) {
 			pics.push("images/"+i+".jpg");
 			pics.push("images/"+i+".jpg");
@@ -60,22 +69,25 @@ var nombreDeCoups = 0;
 	}
 
 	function compare(a) {
-		aElem =document.getElementById(a);
-		elements.push(aElem);
-		var attrib = aElem.style.backgroundImage;
-		aElem.style.opacity = 1;
-		results.push(attrib);
-		count++;
-		count2 = count - 2;
-		count1 = count - 1;
-		if (count%2 == 0) {
-			nombreDeCoups++;
-			document.getElementById("nb").innerHTML = nombreDeCoups;
-			if (results.length == 18) {
-				alert("WON IN "+nombreDeCoups+"MOVES, WELL DONE!");
-			}
-			else {
+		if (elements.length < 2) {
+
+			aElem =document.getElementById(a);
+			elements.push(aElem);
+			var attrib = aElem.style.backgroundImage;
+			aElem.style.opacity = 1;
+			results.push(attrib);
+			count++;
+			count2 = count - 2;
+			count1 = count - 1;
+			if (count%2 == 0) {
+				nombreDeCoups++;
+				document.getElementById("nb").innerHTML = nombreDeCoups;
+				if (results.length == 18) {
+				gameWon();
+				}
+				else {
 				resultat();
+				}
 			}
 		}
 	}
@@ -100,15 +112,14 @@ var nombreDeCoups = 0;
 	}
 
 	function restartGame() {
-		var x;
-		if (confirm("Reinitialize ?") == true) {
 			document.getElementById("contain").innerHTML = "";
+			won.innerHTML = "";
 			initialize();
-		}
-		else {
-			x = "Already giving up ?"
-		}
-		document.getElementById("demo").innerHTML = x;
+
+	}
+
+	function gameWon() {
+		won.innerHTML = '<H1>WON IN "'+nombreDeCoups+'" MOVES, WELL DONE!</H2><button onclick="restartGame()">Restart</button>';
 	}
 	
 			
