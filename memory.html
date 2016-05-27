@@ -2,76 +2,16 @@
 <html>
 <head>
 	<title>Memory game</title>
-<style>
-
-	body {
-		background-color: #F2C379;
-	}
-
-	#content {
-		width: 920px;
-		left: 0;
-		right: 0;
-		margin-left: auto;
-		margin-right: auto;
-		background-color: #F4D57E;
-		text-align: center;
-	}
-
-	#contain {
-		max-width: 920px;
-		padding: 0px;
-	}
-
-	.conti {
-		width: 150px;
-		height: 150px;
-		border: solid 1px;
-		margin: 0px;
-		float: left;
-		background-color: #F4D57E;
-	}
-
-	.image {
-		background-position: cover;
-		opacity: 0;
-		width: 150px;
-		height: 150px;
-	}
-
-	#won {
-		position: absolute;
-		width: 30%;
-		left: 0;
-		right: 0;
-		margin-left: auto;
-		margin-right: auto;
-		text-align: center;
-		background-color: #F2C379;
-	}
-
-	p {
-		display: inline;
-	}
-
-	#moves {
-		
-	}
-
-	#high {
-		
-	}
-
-</style>
+<link rel="stylesheet" type="text/css" href="style.css">
 
 </head>
 <body onload="initialize()">
 <div id="content">
-	<h1>MEMORY</h1>
+	<h1>FRUIT MEMORY</h1>
 	<button onclick="restartGame()">Restart</button>
-	<!-- <button onclick="gameWon()">testwin</button> -->
+	<button onclick="gameWon()">testwin</button>
 	<div id="moves">Number of moves : <p id="nb"></p></div>
-	<div id="high">BEST SCORE : <p id="best"></p></div>
+	<div id="high">Best score : <p id="best"></p></div>
 	<div id="contain"></div>
 	<div id="won"></div>
 </div>
@@ -149,11 +89,10 @@ var won = document.getElementById("won");
 			won.innerHTML = "";
 			nombreDeCoups = 0;
 			initialize();
-
 	}
 
 	function gameWon() {
-		won.innerHTML = '<H1>WON IN "'+nombreDeCoups+'" MOVES, WELL DONE!</H2><button onclick="restartGame()">Restart</button>';
+		won.innerHTML = '<H1>WON IN '+nombreDeCoups+' MOVES, <br>WELL DONE!</H2><button onclick="restartGame()">Restart</button>';
 		if (nombreDeCoups < bestScore) {
 			highScore()
 		}
