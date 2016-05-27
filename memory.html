@@ -3,9 +3,23 @@
 <head>
 	<title>Memory game</title>
 <style>
+
+	body {
+		background-color: #F2C379;
+	}
+
+	#content {
+		width: 920px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		background-color: #F4D57E;
+		text-align: center;
+	}
+
 	#contain {
-		max-width: 950px;
-		height: 474px;
+		max-width: 920px;
 		padding: 0px;
 	}
 
@@ -15,6 +29,7 @@
 		border: solid 1px;
 		margin: 0px;
 		float: left;
+		background-color: #F4D57E;
 	}
 
 	.image {
@@ -26,24 +41,40 @@
 
 	#won {
 		position: absolute;
-		top: 0;
+		width: 30%;
 		left: 0;
 		right: 0;
+		margin-left: auto;
+		margin-right: auto;
 		text-align: center;
+		background-color: #F2C379;
+	}
+
+	p {
+		display: inline;
+	}
+
+	#moves {
+		
+	}
+
+	#high {
+		
 	}
 
 </style>
 
 </head>
 <body onload="initialize()">
-
-<h1>MEMORY</h1>
-<button onclick="restartGame()">Restart</button>
-<div>Number of moves<p id="nb"></p></div>
-<div>BEST SCORE <p id="best"></p></div>
-<div id="contain"></div>
-<div id="won"></div>
-
+<div id="content">
+	<h1>MEMORY</h1>
+	<button onclick="restartGame()">Restart</button>
+	<!-- <button onclick="gameWon()">testwin</button> -->
+	<div id="moves">Number of moves : <p id="nb"></p></div>
+	<div id="high">BEST SCORE : <p id="best"></p></div>
+	<div id="contain"></div>
+	<div id="won"></div>
+</div>
 <script>
 
 var pics = [];
