@@ -8,7 +8,7 @@ var pics = [],
 
 	function initialize() {
 		nombreDeCoups = 0;
-		document.getElementById("nb").innerHTML = "";
+		document.getElementById("nb").innerHTML = 0;
 		for (var i = 1; i < 10; i++) {
 			pics.push("images/"+i+".jpg");
 			pics.push("images/"+i+".jpg");
@@ -26,7 +26,7 @@ var pics = [],
 	function compare(a) {
 		if (elements.length < 2) {
 
-			aElem =document.getElementById(a);
+			aElem = document.getElementById(a);
 			elements.push(aElem);
 			var attrib = aElem.style.backgroundImage;
 			aElem.style.opacity = 1;
